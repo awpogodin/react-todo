@@ -1,26 +1,58 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from "./components/Header.component";
+import TodoList from "./components/TodoList.component";
+import AddTodo from "./components/AddTodo.component";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      todos: [
+        {id: 1, title: 'Купить хлеб', completed: false},
+        {id: 2, title: 'Купить молоко', completed: false},
+        {id: 3, title: 'Купить сок', completed: false},
+      ]
+    }
+  };
+
+  onToggle(id) {
+      this.setState(prevState => {
+          return {
+              todos: prevState.todos.map(todo => {
+                  if (todo.id === id) {
+                      return { ...todo, completed: !todo.completed}
+                  }
+                  return todo;
+              })
+          }
+      })
+  };
+
+    onAdd(title) {
+        this.setState(prevState => {
+            return {
+                todos: [
+                    ...prevState.todos,
+                    { id: Date.now(), title, completed: false}
+                ]
+            }
+        })
+    };
+
+  render() {
+    return (
+        <div className="app">
+          <Header/>
+          <AddTodo/>
+          <TodoList
+              todos={this.state.todos}
+              onToggle={this.onToggle}
+          />
+          </div>
+    )
+  };
 }
 
 export default App;
