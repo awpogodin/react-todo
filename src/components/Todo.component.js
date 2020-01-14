@@ -4,8 +4,14 @@ import Icon from '@material-ui/core/Icon';
 import IconButton from "@material-ui/core/IconButton";
 
 class Todo extends React.Component {
-    handleChange () {
-        this.props.onToggle(this.props.todo.id);
+    onToggleHandler = () => {
+        const {onToggle, todo} = this.props;
+        onToggle(todo.id);
+    };
+
+    onDeleteHandler = () => {
+        const {onDelete, todo} = this.props;
+        onDelete(todo.id);
     };
 
     render() {
@@ -14,12 +20,13 @@ class Todo extends React.Component {
             <div className="todolist_todo">
                 <Checkbox
                     checked={completed}
-                    onChange={this.handleChange}
+                    onChange={this.onToggleHandler}
                     value="primary"
                     inputProps={{ 'aria-label': 'primary checkbox' }}
+                    readOnly
                 />
-                <span className="todo_title">{title}</span>
-                <IconButton>
+                <span className={"todo_title" + (completed ? '__done' : '')}>{title}</span>
+                <IconButton onClick={this.onDeleteHandler}>
                     <Icon>cancel</Icon>
                 </IconButton>
             </div>

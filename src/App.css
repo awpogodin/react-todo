@@ -40,3 +40,8 @@
 .todo_title {
   flex: 2;
 }
+
+.todo_title__done {
+  flex: 2;
+  text-decoration: line-through;
+}
