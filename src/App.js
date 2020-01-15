@@ -33,30 +33,27 @@ class App extends React.Component {
     }
 
     updateLocalStorage = () => {
-        console.log(this.localTodos);
-        localStorage.setItem(STORAGE_TODOS, JSON.stringify(this.localTodos));
+        localStorage.setItem(STORAGE_TODOS, JSON.stringify(this.state.todos));
     };
 
     onToggle = (id) => {
-        const toggleTodos = (todo) => {
-            if (todo.id === id) {
-                return {...todo, completed: !todo.completed}
-            }
-            return todo;
-        };
-        this.localTodos = this.localTodos.map(todo => toggleTodos(todo));
         this.setState(prevState => {
             return {
-                todos: prevState.todos.map(todo => toggleTodos(todo))
+                todos: prevState.todos.map(todo => {
+                    if (todo.id === id) {
+                        return {...todo, completed: !todo.completed}
+                    }
+                    return todo;
+                })
             }
+        }, () => {
+            this.updateLocalStorage();
         });
-        this.updateLocalStorage();
     };
 
     onAdd = (title) => {
         if (title.trim()) {
             const todo = {id: Date.now(), title, completed: false};
-            this.localTodos.push(todo);
             this.setState(prevState => {
                 return {
                     todos: [
@@ -64,19 +61,21 @@ class App extends React.Component {
                         todo
                     ]
                 }
+            }, () => {
+                this.updateLocalStorage();
             });
-            this.updateLocalStorage();
         }
     };
 
     onDelete = id => {
-        this.localTodos = this.localTodos.filter(todo => todo.id !== id);
         this.setState(prevState => {
             return {
                 todos: prevState.todos.filter(todo => todo.id !== id)
             }
+        }, () => {
+            this.updateLocalStorage();
         });
-        this.updateLocalStorage();
+
     };
 
     render() {
