@@ -30,9 +30,13 @@ class AddTodo extends React.Component {
             <div className="addtodo">
                 <TextField
                     className="addtodo_input"
+                    variant="standard"
                     label="Todo"
                     onChange={this.onChangeHandler}
                     value={this.state.input}
+                    inputProps={{
+                        disabled: this.props.loading
+                    }}
                 />
                 <Button
                     size="small"
