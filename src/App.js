@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Header from "./components/Header.component";
-import TodoList from "./components/TodoList.component";
-import AddTodo from "./components/AddTodo.component";
+import Header from "./components/Header";
+import TodoList from "./components/TodoList";
+import AddTodo from "./components/AddTodo";
 
 class App extends React.Component {
     constructor(props) {
