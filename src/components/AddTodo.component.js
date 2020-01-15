@@ -33,6 +33,9 @@ class AddTodo extends React.Component {
                     label="Todo"
                     onChange={this.onChangeHandler}
                     value={this.state.input}
+                    inputProps={{
+                        disabled: this.props.loading
+                    }}
                 />
                 <Button
                     size="small"

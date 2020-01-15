@@ -69,6 +69,7 @@ class App extends React.Component {
                 <Header/>
                 <AddTodo
                     onAdd={this.onAdd}
+                    loading={this.state.loading}
                 />
                 <TodoList
                     todos={this.state.todos}
