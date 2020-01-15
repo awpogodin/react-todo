@@ -9,13 +9,25 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            todos: [
-                {id: 1, title: 'Купить хлеб', completed: false},
-                {id: 2, title: 'Купить молоко', completed: false},
-                {id: 3, title: 'Купить сок', completed: false},
-            ]
+            todos: [],
+            loading: true
         }
     };
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState(() => {
+                return {
+                    todos: [
+                        {id: 1, title: 'Купить хлеб', completed: false},
+                        {id: 2, title: 'Купить молоко', completed: false},
+                        {id: 3, title: 'Купить сок', completed: false},
+                    ],
+                    loading: false
+                }
+            })
+        }, 2000);
+    }
 
     onToggle = (id) => {
         this.setState(prevState => {
@@ -31,14 +43,16 @@ class App extends React.Component {
     };
 
     onAdd = (title) => {
-        this.setState(prevState => {
-            return {
-                todos: [
-                    ...prevState.todos,
-                    {id: Date.now(), title, completed: false}
-                ]
-            }
-        })
+        if (title.trim()) {
+            this.setState(prevState => {
+                return {
+                    todos: [
+                        ...prevState.todos,
+                        {id: Date.now(), title, completed: false}
+                    ]
+                }
+            })
+        }
     };
 
     onDelete = id => {
@@ -60,6 +74,7 @@ class App extends React.Component {
                     todos={this.state.todos}
                     onToggle={this.onToggle}
                     onDelete={this.onDelete}
+                    loading={this.state.loading}
                 />
             </div>
         )

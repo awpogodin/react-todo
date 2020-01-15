@@ -1,11 +1,19 @@
 import React from 'react';
 import Todo from "./Todo.component";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const TodoList = (props) => {
-    const {todos, onToggle, onDelete} = props;
+    const {todos, onToggle, onDelete, loading} = props;
+    console.log(loading);
     return (
         <div className="todolist">
-            {todos.map((todo) => {
+
+            {loading ? (
+                <div className="todolist_loading">
+                    <CircularProgress color="secondary"/>
+                </div>
+                ) :
+                (todos.length>0 ? (todos.map((todo) => {
                 return (
                     <Todo
                         todo={todo}
@@ -14,7 +22,9 @@ const TodoList = (props) => {
                         onDelete={onDelete}
                     />
                 )
-            })}
+            })) : (
+                <span className="todolist_notodos">No todos</span>
+            ))}
         </div>
     )
 };

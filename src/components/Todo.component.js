@@ -25,7 +25,7 @@ class Todo extends React.Component {
                     inputProps={{ 'aria-label': 'primary checkbox' }}
                     readOnly
                 />
-                <span className={"todo_title" + (completed ? '__done' : '')}>{title}</span>
+                <span onClick={this.onToggleHandler} className={"todo_title" + (completed ? ' todo_title__done' : '')}>{title}</span>
                 <IconButton onClick={this.onDeleteHandler}>
                     <Icon>cancel</Icon>
                 </IconButton>
