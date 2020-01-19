@@ -1,5 +1,5 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
+import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 
 class AddTodo extends React.Component {
@@ -10,6 +10,12 @@ class AddTodo extends React.Component {
             input: ''
         }
     }
+
+    onKeyDownHandler = (e) => {
+        if (e.key === 'Enter') {
+            this.onAddHandler()
+        }
+    };
 
     onChangeHandler = (e) => {
         this.setState({
@@ -28,9 +34,11 @@ class AddTodo extends React.Component {
     render() {
         return (
             <div className="addtodo">
-                <TextField
+                <Input
                     className="addtodo_input"
-                    label="Todo"
+                    variant="standard"
+                    autoFocus={true}
+                    onKeyDown={this.onKeyDownHandler}
                     onChange={this.onChangeHandler}
                     value={this.state.input}
                     inputProps={{
