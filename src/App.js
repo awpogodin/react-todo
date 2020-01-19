@@ -20,16 +20,14 @@ class App extends React.Component {
 
     componentDidMount() {
         this.localTodos = JSON.parse(localStorage.getItem(STORAGE_TODOS)) || [];
-        setTimeout(() => {
-            this.setState(() => {
-                return {
-                    todos: [
-                        ...this.localTodos
-                    ],
-                    loading: false
-                }
-            })
-        }, 2000);
+        this.setState(() => {
+            return {
+                todos: [
+                    ...this.localTodos
+                ],
+                loading: false
+            }
+        })
     }
 
     updateLocalStorage = () => {

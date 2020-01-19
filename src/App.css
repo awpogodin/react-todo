@@ -13,6 +13,15 @@
   text-align: center;
 }
 
+.header_logo {
+  display: block;
+  margin: 30px auto;
+}
+
+.header_logo img {
+  width: 60px;
+}
+
 .header_title {
   font-weight: 100 !important;
   color: #212121;
