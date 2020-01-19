@@ -4,7 +4,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 const TodoList = (props) => {
     const {todos, onToggle, onDelete, loading} = props;
-    console.log(loading);
     return (
         <div className="todolist">
 
