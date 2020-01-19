@@ -1,8 +1,15 @@
 import React from 'react';
 import './App.css';
+// import {
+//     BrowserRouter as Router,
+//     Switch,
+//     Route,
+//     Link
+// } from "react-router-dom";
 import Header from "./components/Header";
 import TodoList from "./components/TodoList";
 import AddTodo from "./components/AddTodo";
+import Menu from "./components/Menu";
 
 class App extends React.Component {
     constructor(props) {
@@ -66,7 +73,8 @@ class App extends React.Component {
     render() {
         return (
             <div className="app">
-                <Header/>
+                <Menu/>
+                <Header title='todos'/>
                 <AddTodo
                     onAdd={this.onAdd}
                     loading={this.state.loading}
