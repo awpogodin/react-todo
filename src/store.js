@@ -3,7 +3,7 @@ import todosReducer from "./reducers/todosReducer";
 
 const store = createStore(
     combineReducers({
-        todos: todosReducer,
+        todosState: todosReducer,
     }),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );

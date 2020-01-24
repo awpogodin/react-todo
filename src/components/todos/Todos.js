@@ -27,8 +27,8 @@ class Todos extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    todos: state.todos.todos,
-    loading: state.todos.loading
+    todos: state.todosState.todos,
+    loading: state.todosState.loading
 });
 
 const mapDispatchToProps = ({

@@ -41,10 +41,9 @@ function todosReducer(state = initialState, {type, payload}) {
             }
         }
         case TODOS_ACTIONS.SET_LOADING: {
-            const {state} = payload;
             return {
                 ...state,
-                loading: state,
+                loading: payload.state,
             }
         }
         default:
