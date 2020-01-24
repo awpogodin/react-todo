@@ -1,16 +1,20 @@
 import {TODOS_ACTIONS} from "../actions/constants";
 
 const initialState = {
-    todos: [
-        {id: 1, title: 'Купить хлеб', completed: false},
-        {id: 2, title: 'Купить молоко', completed: false},
-        {id: 3, title: 'Купить сок', completed: false},
-    ],
-    loading: false
+    todos: [],
+    loading: true
 };
+
 
 function todosReducer(state = initialState, {type, payload}) {
     switch (type) {
+        case TODOS_ACTIONS.UPDATE_TODOS: {
+            const {todos} = payload;
+            return {
+                ...state,
+                todos
+            }
+        }
         case TODOS_ACTIONS.ADD_TODO: {
             const {title} = payload;
             return {

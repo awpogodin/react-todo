@@ -9,13 +9,19 @@ import {Provider} from "react-redux";
 import createStore from "./store";
 import Spinner from "./components/Spinner";
 
-const { store, persistor } = createStore();
+const persistingEnabled = false;
+const { store, persistor } = createStore(persistingEnabled);
 
 ReactDOM.render(
     <Provider store={store}>
-        <PersistGate loading={<Spinner/>} persistor={persistor}>
+        {persistingEnabled ? (
+            <PersistGate loading={<Spinner/>} persistor={persistor}>
+                <App />
+            </PersistGate>
+        ) : (
             <App />
-        </PersistGate>
+        )}
+
     </Provider>,
     document.getElementById('root'));
 

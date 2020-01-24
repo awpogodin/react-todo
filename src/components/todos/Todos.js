@@ -3,9 +3,13 @@ import Header from "./Header";
 import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
 import {connect} from "react-redux";
-import {addTodo, deleteTodo, toggleTodo} from "../../actions/todosActions";
+import {addTodo, deleteTodo, loadTodos, toggleTodo} from "../../actions/todosActions";
 
 class Todos extends React.Component {
+    componentDidMount() {
+        this.props.loadTodos();
+    }
+
     render() {
         const {todos, loading, addTodo, deleteTodo, toggleTodo} = this.props;
         return (
@@ -34,7 +38,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = ({
     addTodo,
     deleteTodo,
-    toggleTodo
+    toggleTodo,
+    loadTodos,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Todos);
