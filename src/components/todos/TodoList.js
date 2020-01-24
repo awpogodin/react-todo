@@ -1,6 +1,6 @@
 import React from 'react';
 import Todo from "./Todo";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import Spinner from "../Spinner";
 
 const TodoList = (props) => {
     const {todos, onToggle, onDelete, loading} = props;
@@ -8,9 +8,7 @@ const TodoList = (props) => {
         <div className="todolist">
 
             {loading ? (
-                <div className="todolist_loading">
-                    <CircularProgress color="secondary"/>
-                </div>
+                <Spinner/>
                 ) :
                 (todos.length>0 ? (todos.map((todo) => {
                 return (

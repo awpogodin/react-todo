@@ -4,12 +4,18 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import { PersistGate } from 'redux-persist/integration/react';
 import {Provider} from "react-redux";
-import store from "./store";
+import createStore from "./store";
+import Spinner from "./components/Spinner";
+
+const { store, persistor } = createStore();
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <PersistGate loading={<Spinner/>} persistor={persistor}>
+            <App />
+        </PersistGate>
     </Provider>,
     document.getElementById('root'));
 
