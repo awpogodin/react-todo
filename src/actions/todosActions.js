@@ -1,4 +1,5 @@
 import {TODOS_ACTIONS} from "./constants";
+import {isTodosExist} from "../selectors/todosSelectors";
 
 // const stubTodos = [
 //     {id: 1, title: 'Купить хлеб', completed: false},
@@ -35,7 +36,7 @@ export const updateTodos = todos => ({
 
 export const loadTodos = () =>
     async (dispatch, getState) => {
-    const todosExist = Boolean(getState().todosState.todos.length);
+    const todosExist = isTodosExist(getState());
     if (!todosExist) {
         const todos = await serviceLayer(TODOS_URL);
         dispatch(updateTodos(todos));

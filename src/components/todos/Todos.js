@@ -4,6 +4,7 @@ import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
 import {connect} from "react-redux";
 import {addTodo, deleteTodo, loadTodos, setLoading, toggleTodo} from "../../actions/todosActions";
+import {getActiveTodosCount, getActiveTodosCountMemo, getCurrentTodos, isLoading} from "../../selectors/todosSelectors";
 
 class Todos extends React.Component {
     componentDidMount() {
@@ -12,7 +13,7 @@ class Todos extends React.Component {
     }
 
     render() {
-        const {todos, loading, addTodo, deleteTodo, toggleTodo} = this.props;
+        const {todos, loading, addTodo, deleteTodo, toggleTodo, activeTodosCount} = this.props;
         return (
             <>
                 <Header title='todos'/>
@@ -20,6 +21,7 @@ class Todos extends React.Component {
                     onAdd={addTodo}
                     loading={loading}
                 />
+                <span className="activeTodosCount">Active todos: {activeTodosCount}</span>
                 <TodoList
                     todos={todos}
                     onToggle={toggleTodo}
@@ -32,8 +34,9 @@ class Todos extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    todos: state.todosState.todos,
-    loading: state.todosState.loading
+    todos: getCurrentTodos(state),
+    loading: isLoading(state),
+    activeTodosCount: getActiveTodosCountMemo(state),
 });
 
 const mapDispatchToProps = ({

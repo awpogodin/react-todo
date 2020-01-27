@@ -51,6 +51,14 @@
   color: #9e9e9e;
 }
 
+.activeTodosCount {
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  color: #9E9E9E;
+  font-weight: 300;
+}
+
 .loading {
   margin: 50px auto;
   text-align: center;
