@@ -9,7 +9,7 @@ import {Provider} from "react-redux";
 import createStore from "./store";
 import Spinner from "./components/Spinner";
 
-const persistingEnabled = false;
+const persistingEnabled = true;
 const { store, persistor } = createStore(persistingEnabled);
 
 ReactDOM.render(

@@ -3,11 +3,12 @@ import Header from "./Header";
 import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
 import {connect} from "react-redux";
-import {addTodo, deleteTodo, loadTodos, toggleTodo} from "../../actions/todosActions";
+import {addTodo, deleteTodo, loadTodos, setLoading, toggleTodo} from "../../actions/todosActions";
 
 class Todos extends React.Component {
     componentDidMount() {
-        this.props.loadTodos();
+        // this.props.loadTodos();
+        this.props.setLoading(false);
     }
 
     render() {
@@ -40,6 +41,7 @@ const mapDispatchToProps = ({
     deleteTodo,
     toggleTodo,
     loadTodos,
+    setLoading,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Todos);
