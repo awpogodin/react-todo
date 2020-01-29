@@ -4,7 +4,7 @@ import AddTodo from "../components/todos/AddTodo";
 import TodoList from "../components/todos/TodoList";
 import {connect} from "react-redux";
 import {addTodo, deleteTodo, loadTodos, setLoading, toggleTodo} from "../actions/todosActions";
-import {getActiveTodosCount, getActiveTodosCountMemo, getCurrentTodos, isLoading} from "../selectors/todosSelectors";
+import {getActiveTodosCount, getCurrentTodos, isLoading} from "../selectors/todosSelectors";
 
 class TodosScreen extends React.Component {
     componentDidMount() {
@@ -36,7 +36,7 @@ class TodosScreen extends React.Component {
 const mapStateToProps = state => ({
     todos: getCurrentTodos(state),
     loading: isLoading(state),
-    activeTodosCount: getActiveTodosCountMemo(state),
+    activeTodosCount: getActiveTodosCount(state),
 });
 
 const mapDispatchToProps = ({
