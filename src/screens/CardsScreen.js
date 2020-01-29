@@ -16,7 +16,7 @@ class CardsScreen extends React.Component {
                         and more recently with desktop publishing software like Aldus PageMaker including versions of
                         Lorem Ipsum.</p>
                 </Card>
-                <Card>Hello world</Card>
+                <Card title="Example card">Hello world</Card>
             </>
         )
     }

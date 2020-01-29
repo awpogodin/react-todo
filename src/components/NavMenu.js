@@ -6,7 +6,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 const NavMenu = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
-
     const history = useHistory();
 
     const handleClick = event => {
