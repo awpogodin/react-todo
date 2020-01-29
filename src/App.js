@@ -5,9 +5,10 @@ import {
     Switch,
     Route
 } from "react-router-dom";
-import Todos from "./screens/TodosScreen";
+import TodosScreen from "./screens/TodosScreen";
 import CardsScreen from "./screens/CardsScreen";
 import NavMenu from "./components/NavMenu";
+import FormScreen from "./screens/FormScreen";
 
 class App extends React.Component {
     render() {
@@ -18,8 +19,11 @@ class App extends React.Component {
                     <Route path='/cards'>
                         <CardsScreen/>
                     </Route>
+                    <Route path='/forms'>
+                        <FormScreen/>
+                    </Route>
                     <Route path='/'>
-                        <Todos/>
+                        <TodosScreen/>
                     </Route>
                 </Switch>
             </Router>

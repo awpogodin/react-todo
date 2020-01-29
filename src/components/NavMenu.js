@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -7,12 +7,20 @@ import MenuItem from '@material-ui/core/MenuItem';
 const NavMenu = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
+    const history = useHistory();
+
     const handleClick = event => {
         setAnchorEl(event.currentTarget);
     };
 
     const handleClose = () => {
         setAnchorEl(null);
+    };
+
+    const changeRoute = (e) => {
+        const path = e.target.getAttribute('href') || '/';
+        history.push(path);
+        handleClose();
     };
 
     return (
@@ -31,11 +39,14 @@ const NavMenu = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose}>
-                    <Link className='nav-menu_link' to='/'>Todos</Link>
+                <MenuItem onClick={changeRoute} href='/'>
+                    Todos
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <Link className='nav-menu_link' to='/cards'>Cards</Link>
+                <MenuItem onClick={changeRoute} href='/cards'>
+                    Cards
+                </MenuItem>
+                <MenuItem onClick={changeRoute} href='/forms'>
+                    Forms
                 </MenuItem>
             </Menu>
         </div>
