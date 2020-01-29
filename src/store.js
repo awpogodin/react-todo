@@ -3,9 +3,11 @@ import todosReducer from "./reducers/todosReducer";
 import storage from 'redux-persist/es/storage';
 import {persistStore, persistReducer} from 'redux-persist'
 import thunk from "redux-thunk";
+import { reducer as formReducer } from 'redux-form'
 
 const rootReducer = combineReducers({
     todosState: todosReducer,
+    form: formReducer,
 });
 
 const persistConfig = {

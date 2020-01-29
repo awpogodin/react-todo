@@ -3,6 +3,7 @@ import {Formik} from 'formik';
 import {TextField} from "formik-material-ui";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Button from "@material-ui/core/Button";
+import {validate} from "./FormValidation";
 
 const styles = {
     formEl: {
@@ -17,19 +18,7 @@ const initValues = {
 };
 
 const validation = values => {
-    console.log('validation...');
-    const errors = {};
-    if (!values.email) {
-        errors.email = 'Required';
-    } else if (
-        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-        errors.email = 'Invalid email address';
-    }
-    if (!values.password || !values.password.trim()) {
-        errors.password = 'Required';
-    }
-    return errors;
+    return validate(values);
 };
 
 const onSubmit = (values, {setSubmitting}) => {
