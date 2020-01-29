@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from "../todos/Header";
-import Card from "./Card";
+import Header from "../components/todos/Header";
+import Card from "../components/cards/Card";
 
-class Cards extends React.Component {
+class CardsScreen extends React.Component {
     render() {
         return (
             <>
@@ -22,4 +22,4 @@ class Cards extends React.Component {
     }
 }
 
-export default Cards;
+export default CardsScreen;

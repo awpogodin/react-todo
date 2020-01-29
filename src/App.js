@@ -5,8 +5,8 @@ import {
     Switch,
     Route
 } from "react-router-dom";
-import Todos from "./components/todos/Todos";
-import Cards from "./components/cards/Cards";
+import Todos from "./screens/TodosScreen";
+import CardsScreen from "./screens/CardsScreen";
 import NavMenu from "./components/NavMenu";
 
 class App extends React.Component {
@@ -16,7 +16,7 @@ class App extends React.Component {
                 <NavMenu/>
                 <Switch>
                     <Route path='/cards'>
-                        <Cards/>
+                        <CardsScreen/>
                     </Route>
                     <Route path='/'>
                         <Todos/>

@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from "./Header";
-import AddTodo from "./AddTodo";
-import TodoList from "./TodoList";
+import Header from "../components/todos/Header";
+import AddTodo from "../components/todos/AddTodo";
+import TodoList from "../components/todos/TodoList";
 import {connect} from "react-redux";
-import {addTodo, deleteTodo, loadTodos, setLoading, toggleTodo} from "../../actions/todosActions";
-import {getActiveTodosCount, getActiveTodosCountMemo, getCurrentTodos, isLoading} from "../../selectors/todosSelectors";
+import {addTodo, deleteTodo, loadTodos, setLoading, toggleTodo} from "../actions/todosActions";
+import {getActiveTodosCount, getActiveTodosCountMemo, getCurrentTodos, isLoading} from "../selectors/todosSelectors";
 
-class Todos extends React.Component {
+class TodosScreen extends React.Component {
     componentDidMount() {
         // this.props.loadTodos();
         this.props.setLoading(false);
@@ -47,4 +47,4 @@ const mapDispatchToProps = ({
     setLoading,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Todos);
+export default connect(mapStateToProps, mapDispatchToProps)(TodosScreen);
