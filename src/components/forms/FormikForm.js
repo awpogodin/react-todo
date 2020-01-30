@@ -36,7 +36,7 @@ const FormikForm = () => (
             onSubmit={onSubmit}
         >
             {({
-                values,
+                // values,
                 handleChange,
                   handleSubmit,
                 isSubmitting,
@@ -44,7 +44,6 @@ const FormikForm = () => (
                 <form>
                     <TextField
                         name="email"
-                        defaultValue={values.email}
                         type="email"
                         label="Email"
                         variant="standard"
@@ -56,7 +55,6 @@ const FormikForm = () => (
                         type="password"
                         label="Password"
                         name="password"
-                        defaultValue={values.password}
                         variant="standard"
                         style={styles.formEl}
                     />
